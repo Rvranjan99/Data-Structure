@@ -27,6 +27,22 @@ void insert(struct node** head){
     }
 
 }
+void insertAtBeg(struct node** head){
+
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the data:");
+    int x;
+    scanf("%d",&x);
+
+    ptr->data=x;
+    ptr->next=*head;
+    if(*head==NULL){
+        start=tail=ptr;
+    }
+    else{
+            start=ptr;
+    }
+}
 void printList(){
     struct node *temp=start;
     while(temp->next!=NULL || start==NULL){
@@ -38,7 +54,7 @@ void printList(){
 int main(){
     int choice;
     do{
-         printf("1.insert\n2.Display\n3.EXIT\n");
+         printf("1.insert at END\n2.Insert at starting \n3.Display\n4.EXIT\n");
          printf("Enter your choice:");
          scanf("%d",&choice);
          switch(choice){
@@ -46,11 +62,15 @@ int main(){
                 insert(&start);
                 break;
             case 2:
+                insertAtBeg(&start);
+                break;
+            case 3:
                 printList();
                 break;
 
+
          }
-    }while(choice!=3);
+    }while(choice!=4);
 
 
 }
