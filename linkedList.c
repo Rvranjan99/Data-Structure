@@ -7,7 +7,46 @@ struct node{
 };
 struct node *start=NULL;
 struct node *tail=NULL;
-void insert(struct node** head){
+void insert(int pos){
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the data:");
+    int x;
+    scanf("%d",&x);
+    ptr->data=x;
+    if(start==NULL){
+        start=tail=ptr;
+        ptr->next=NULL;
+    }
+    else{
+        int i=0;
+        struct node *temp=start;
+        while(i<pos){temp=temp->next;i++;}
+
+        ptr->next=temp->next;
+        temp->next=ptr;
+
+    }
+
+}
+//insert at end
+void append(){
+
+    struct node *ptr=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the data:");
+    int x;
+    scanf("%d",&x);
+    ptr->data=x;
+    ptr->next=NULL;
+    if(start==NULL){
+        start=tail=ptr;
+    }
+    else{
+        tail->next=ptr;
+        tail=ptr;
+    }
+}
+//insert at start
+void push(){
 
     struct node *ptr=(struct node*)malloc(sizeof(struct node));
     printf("Enter the data:");
@@ -15,17 +54,13 @@ void insert(struct node** head){
     scanf("%d",&x);
 
     ptr->data=x;
-    ptr->next=NULL;
-
-    if(*head==NULL){
+    ptr->next=start;
+    if(start==NULL){
         start=tail=ptr;
-
     }
     else{
-        tail->next=ptr;
-        tail=ptr;
+            start=ptr;
     }
-
 }
 void printList(){
     struct node *temp=start;
@@ -36,21 +71,31 @@ void printList(){
      printf("%d\n",temp->data);
 }
 int main(){
-    int choice;
+    int choice,pos;
     do{
-         printf("1.insert\n2.Display\n3.EXIT\n");
+         printf("1.insert at END\n2.Insert at starting \n3.insert after node no.(starting node 0)\n4.Display\n5.EXIT\n");
          printf("Enter your choice:");
          scanf("%d",&choice);
          switch(choice){
             case 1:
-                insert(&start);
+                append();
                 break;
             case 2:
+                push();
+                break;
+            case 3:
+
+                printf("Enter the node number");
+                scanf("%d",&pos);
+                insert(pos);
+                break;
+            case 4:
                 printList();
                 break;
 
+
          }
-    }while(choice!=3);
+    }while(choice!=5);
 
 
 }
