@@ -1,6 +1,6 @@
 # Data-Structure
 This dope repo is all about **Data Structures**. This repo has been created in order to create a one stop store for all the data structures implementations. <br/>
-Not just data structures but any typical question/ problem related to data structues will also be added to this repo!
+Not just data structures but any typical question/ problem related to data structures will also be added to this repo!
 
 # Contribute
 - Do you think this repo lacks something? <br/>
